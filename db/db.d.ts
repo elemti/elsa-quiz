@@ -3,12 +3,33 @@
  * Please do not edit it manually.
  */
 
-export interface Pet {
-  id: number;
-  name: string;
-  species: string;
+import type { ColumnType } from "kysely";
+
+export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
+  ? ColumnType<S, I | undefined, U>
+  : ColumnType<T, T | undefined, T>;
+
+export type Timestamp = ColumnType<Date, Date | string, Date | string>;
+
+export interface Session {
+  created_at: Generated<Timestamp | null>;
+  id: Generated<number>;
+  name: string | null;
+  pin: string | null;
+  slug: string;
+  updated_at: Generated<Timestamp | null>;
+}
+
+export interface SessionUser {
+  created_at: Generated<Timestamp | null>;
+  id: Generated<number>;
+  is_owner: boolean | null;
+  session_id: number;
+  updated_at: Generated<Timestamp | null>;
+  username: string;
 }
 
 export interface DB {
-  pet: Pet;
+  session: Session;
+  session_user: SessionUser;
 }
