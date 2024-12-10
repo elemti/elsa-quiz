@@ -87,7 +87,7 @@ export function RoomAdmin({
                       {globalState[it.username]?.responses?.filter(
                         (it) => it.choice === correctOpts[it.questionId]
                       )?.length ?? 0}
-                      /{questions.length}
+                      /{globalState[it.username]?.responses?.length}
                     </Typography>
                   </div>
                 }
