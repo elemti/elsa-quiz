@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.12.2",
   "scripts": {
+    "lint:fix": "eslint --fix .",
     "db:generate": "npx dotenv-flow -- kysely-codegen --out-file ./db/db.d.ts",
     "db:migrate-latest": "pnpm db:migrate latest; pnpm db:generate",
     "db:migrate-make": "pnpm db:migrate make",

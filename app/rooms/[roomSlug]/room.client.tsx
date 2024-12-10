@@ -97,6 +97,7 @@ export function Room({
       <CardContent className="flex flex-col gap-2">
         {Object.entries(nextQuestion.options).map(([choice, question]) => (
           <Button
+            key={choice}
             variant="outlined"
             onClick={() => {
               submitAnswer(nextQuestion.id, choice);
