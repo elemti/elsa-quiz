@@ -84,8 +84,10 @@ export function RoomAdmin({
                     )}
                     <div className="flex-1" />
                     <Typography>
-                      {globalState[it.username]?.responses?.length ?? 0}/
-                      {questions.length}
+                      {globalState[it.username]?.responses?.filter(
+                        (it) => it.choice === correctOpts[it.questionId]
+                      )?.length ?? 0}
+                      /{questions.length}
                     </Typography>
                   </div>
                 }
